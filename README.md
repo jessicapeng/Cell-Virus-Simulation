@@ -1,5 +1,5 @@
 
-Overview
+## Overview
 
 The purpose of this project is to simulate the outbreak of an infectious disease. This is a common problem in the field of epidemiology, which is the study of infectious diseases. While the simulation we will write is an extremely simplified version of actual models, it is based on some of the the same ideas. 
 We will simulate the spread of the disease on a map of New York City. Our map is a 150x150 grid. You can think of each cell (or pixel) of this grid as representing a number of individuals that live in that area. In step 1 of the project, you will read in map data from a file and display the map. The map will look something like this: 
@@ -17,7 +17,7 @@ Time is measured in discrete steps. After a number of steps, the disease will ha
 
 map2.png
 
-Step 1 (25 points) - Modeling and displaying the map
+## Step 1 (25 points) - Modeling and displaying the map
 Start by downloading the file simulator.pyPreview the document, which contains skeleton code with some function and class definitions already in place. 
 
 We first need to create a model for each cell and then store the cells together into a map. We will use two classes: Cell and Map. Cell has attributes the x and y coordinate of each instance, as well as the current state of this cell as a string ("S"=susceptible, "R"=resistant, "I"=infected).
@@ -43,16 +43,16 @@ You should now be able to infect a cell on the map and see the disease spread on
 
 map4.png
 
-Step 3 (20 points) - Recovery
+## Step 3 (20 points) - Recovery
 
 We would also like our cells to be able to recover from the infection. In our model, we will recover after a certain number of time-steps. The variable recovery_time (near the beginning of the file) specifies after how many time steps a cell recovers. When a cell recovers, it's state moves from "I" to "S". Modify the Cell class and the process method to allow recovery. 
 
-Step 4 (25 pts) - Mortality
+## Step 4 (25 pts) - Mortality
 
 Finally, some cells may not recover from an infection and will die instead. Our model assumes that an infected cell dies with a certain probability in each time step. The probability depends on the number of time steps that the cell has been infected. The probability of dying, giving the number of time steps, is normally distributed. So, for example, a particularly deadly disease might kill most people on time step 3 after becoming infected. Some people might die earlier and some might survive longer (or long enough to recover).
 
 The function pdeath(x, mean, stdev) models the mortality of a cell using the normal distribution (this has already been implemented). You can think of it as returning the probability that an infected cell dies at time step x. The mean represents the average time step at which people typically die. Modify the process(self) method. Use the random.random() function to obtain a random float between 0.0 and 1.0 and use it to decide if the cell dies or not. Note: The order in which each cell is processed matters. When a cell is processed, first decide if the cell recovers, then if it dies. Then, if it is still infected, proceed to infect adjacent cells, as described above.
 
-Step 5 - Experiment!
+## Step 5 - Experiment!
 
 Finally, modify the parameters of the model (virality, recovery time, mean and standard deviation for the normal distribution) and see how the disease spreads. Infect any cell, as in the example above, and repeatedly call time_step() to advance the simulation. The most interesting (and horrible) part about modeling deadly infectious diseases is to study the interaction between mortality and virulence. A particularly deadly disease may kill the hosts before they can infect others, thereby preventing the disease from spreading further (this has happened in the case of Ebola epidemics). Many diseases are usually harmless but may be extremely virulent (such as the flu or common cold), or hosts can stay infectious for a long time (for example, herpes). Changing the parameters a little bit can have devastating consequences!
