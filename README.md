@@ -17,7 +17,7 @@ Time is measured in discrete steps. After a number of steps, the disease will ha
 
 map2.png
 
-## Step 1 (25 points) - Modeling and displaying the map
+## Step 1  - Modeling and displaying the map
 Start by downloading the file simulator.pyPreview the document, which contains skeleton code with some function and class definitions already in place. 
 
 We first need to create a model for each cell and then store the cells together into a map. We will use two classes: Cell and Map. Cell has attributes the x and y coordinate of each instance, as well as the current state of this cell as a string ("S"=susceptible, "R"=resistant, "I"=infected).
@@ -32,7 +32,8 @@ The shape of the numpy array should be (150, 150, 3), which corresponds to (row,
 Each cell should be displayed in the color that represents its state: green if the state is S, red if the state is I and gray if the state is R. Pixels in the image that do not correspond to a cell on the map should be displayed in black. 
 You should now be able to run your program, which will load the class and function definitions and then type the following into the IPython console: 
 map3.png
-Step 2 (30 points) - Making cells infectious
+
+## Step 2  - Making cells infectious
 Next, we will work on the mechanism that allows cells to become infected and infect their neighbor cells. Any cell that is infected can infect its neighbors. 
 
 Add a method infect(self) to the Cell class. When infect is called, the state attribute should be set to "I". Each cell should also have a time data field that keeps track of how long a cell has been infected. Initially this data field can be set to 0, but calling infect on a sell will also always reset the time field to 0. 
@@ -43,11 +44,11 @@ You should now be able to infect a cell on the map and see the disease spread on
 
 map4.png
 
-## Step 3 (20 points) - Recovery
+## Step 3  - Recovery
 
 We would also like our cells to be able to recover from the infection. In our model, we will recover after a certain number of time-steps. The variable recovery_time (near the beginning of the file) specifies after how many time steps a cell recovers. When a cell recovers, it's state moves from "I" to "S". Modify the Cell class and the process method to allow recovery. 
 
-## Step 4 (25 pts) - Mortality
+## Step 4  - Mortality
 
 Finally, some cells may not recover from an infection and will die instead. Our model assumes that an infected cell dies with a certain probability in each time step. The probability depends on the number of time steps that the cell has been infected. The probability of dying, giving the number of time steps, is normally distributed. So, for example, a particularly deadly disease might kill most people on time step 3 after becoming infected. Some people might die earlier and some might survive longer (or long enough to recover).
 
